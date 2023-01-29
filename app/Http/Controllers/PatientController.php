@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Appointment;
+use App\Models\Doctor;
 use Carbon\Carbon;
 use Hash;
 use Session;
@@ -38,6 +40,39 @@ class PatientController extends Controller
         return view('patient.doctor', compact('apps', 'input', 'specs'));
     }
 
+    public function saveappointment(Request $request){
+        $this->validate($request, [
+            'appointment_time' => 'required',
+            'patient_name' => 'required',
+            'mobile' => 'required',
+        ]);
+        $input = $request->all();
+        $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
+        $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
+        $input['token'] = ($token > 0) ? $token+1 : 1;
+        if($request->log == 1):
+            $patient['name'] = $input['patient_name'];
+            //$patient['email'] = $input['mobile'];
+            $patient['mobile'] = $input['mobile'];
+            $patient['password'] = Hash::make($input['pin']);
+            $patient['user_type'] = 'P'; // Patient
+            $patient['user_status'] = 'A';
+            $p = User::upsert($patient, 'email');
+            if($p > 0):
+                $input['user_id'] = $p;
+                $patient = User::where('email', $patient['email'])->first();
+            else:
+                $input['user_id'] = $p->id;
+                $patient = $p;
+            endif;
+            Auth::login($patient);            
+        endif;
+        $app = Appointment::create($input);
+        $doctor = Doctor::find($request->doctor_id); $user = User::find($doctor->user_id);
+        $token = $input['token']; $date = $request->appointment_date; $time = $request->appointment_time; $type = 'A';
+        return view('message', compact('token', 'date', 'time', 'doctor', 'app', 'user', 'type'));
+    }
+
     public function clinicapp(){
         $specs = DB::table('specializations')->where('category', 2)->orderBy('name')->get();
         $apps = []; $input = [];
@@ -46,5 +81,9 @@ class PatientController extends Controller
 
     public function clinicappointment(Request $request){
 
+    }
+
+    public function message(){
+        return view('message');
     }
 }

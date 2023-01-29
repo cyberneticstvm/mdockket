@@ -407,6 +407,26 @@ jQuery(window).on('resize',function () {
 });
 /*  Window Resize END */	
 
+$(function(){
+	"use strict"
+
+	$(".slotBtn").click(function(){
+        var id = $(this).data('bs-target');
+        $(".collapse").removeClass('show');
+        $("#"+id).addClass('show');
+    });
+
+	$(".slot").click(function(){
+        var dis = $(this);
+        $('.slot').removeClass('activeslot');
+        dis.addClass('activeslot');
+        dis.parent().parent().find(".atime").val(dis.text().trim());
+    });
+
+	$(".no-app").addClass('no-app');
+
+
+})
 setTimeout(function () {
     $(".alert").hide('slow');
 }, 3000);

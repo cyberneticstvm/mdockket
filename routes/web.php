@@ -38,6 +38,8 @@ Route::group(['middleware' => ['web', 'auth', 'patient']], function(){
     Route::post('/patient/doctorapp', [PatientController::class, 'doctorappointment'])->name('patient.doctorappointment');
     Route::get('/patient/clinicapp', [PatientController::class, 'clinicapp'])->name('patient.clinicapp');
     Route::post('/patient/clinicapp', [PatientController::class, 'clinicappointment'])->name('patient.clinicappointment');
+    Route::post('/appointment/create/', [PatientController::class, 'saveappointment'])->name('appointment.save');
+    Route::get('/message', [PatientController::class, 'message'])->name('message');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
