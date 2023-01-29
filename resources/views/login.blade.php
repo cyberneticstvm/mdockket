@@ -58,7 +58,7 @@
                             <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">SIGN IN</button>
 						</div>
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="forgot-password.html" class="btn-link">Forgot password?</a>
+							<a href="/forgot" class="btn-link">Forgot password?</a>
 						</div>
 					</form>  
                     <div class="text-center mb-auto p-tb20">
