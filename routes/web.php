@@ -29,6 +29,8 @@ Route::post('/signup', [AuthController::class, 'register'])->name('register');
 Route::get('/forgot', [AuthController::class, 'forgot'])->name('forgot');
 Route::post('/forgot', [AuthController::class, 'forgotemail'])->name('forgot.email');
 Route::get('/resetpassword/{token}', [AuthController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [AuthController::class, 'updatepassword'])->name('updatepassword');
+Route::get('/error', [AuthController::class, 'error'])->name('error');
 
 Route::group(['middleware' => ['web', 'auth', 'patient']], function(){
     Route::get('/patient/profile', [PatientController::class, 'profile'])->name('patient.profile');

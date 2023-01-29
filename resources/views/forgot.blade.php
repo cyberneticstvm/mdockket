@@ -47,7 +47,7 @@
 <!-- Footer -->
 <footer class="footer fixed">
     <div class="container">
-        <a href="/login/p" class="btn btn-primary light btn-rounded text-primary d-block">SIGN IN</a>
+        <a href="/login/P" class="btn btn-primary light btn-rounded text-primary d-block">SIGN IN</a>
         </div>
 </footer>
 <!-- Footer End -->

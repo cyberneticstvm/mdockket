@@ -30,7 +30,7 @@
                         @csrf
 						<div class="input-group input-mini mb-3">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
-							<input type="email" class="form-control" placeholder="Email" name="email">
+							<input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
                             @error('email')
                             <small class="text-danger">{{ $errors->first('email') }}</small>
                             @enderror
