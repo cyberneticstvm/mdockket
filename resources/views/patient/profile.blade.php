@@ -52,7 +52,7 @@
         <div class="contact-section">
             <div class="d-flex justify-content-between align-item-center">
                 <h5 class="title">Contacts</h5>
-                <a href="javascript:void(0);" class="btn-link">Edit Profile</a>
+                <a href="javascript:void(0);" class="btn-link" data-bs-toggle="modal" data-bs-target="#profileModal">Edit Profile</a>
             </div>
             <ul>
                 <li>
@@ -62,7 +62,7 @@
                         </div> 
                         <div class="ms-3">
                             <div class="light-text">Mobile Phone</div>
-                            <p class="mb-0"></p>
+                            <p class="mb-0">{{ $patient->mobile }}</p>
                         </div>
                     </a>
                 </li>
@@ -89,51 +89,48 @@
                     </a>
                 </li>
             </ul>
-            <div class="d-flex justify-content-between align-item-center">
-                <h5 class="title">Booking History 🏆</h5>
-            </div>
-            <div class="swiper-btn-center-lr">
-                <div class="swiper-container mt-4 offer-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="offer-bx">
-                                <div class="offer-content">
-                                    <h6>Order 10 packs French Fries Deluxe</h6>
-                                    <small>4 days ago</small>
-                                </div>
-                                <div class="point">
-                                    <h5 class="title">150</h5>
-                                    <small class="d-block">Pts</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="offer-bx">
-                                <div class="offer-content">
-                                    <h6>Order 10 packs French Fries Deluxe</h6>
-                                    <small>4 days ago</small>
-                                </div>
-                                <div class="point">
-                                    <h5 class="title">150</h5>
-                                    <small class="d-block">Pts</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="offer-bx">
-                                <div class="offer-content">
-                                    <h6>Order 10 packs French Fries Deluxe</h6>
-                                    <small>4 days ago</small>
-                                </div>
-                                <div class="point">
-                                    <h5 class="title">150</h5>
-                                    <small class="d-block">Pts</small>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="profileModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="post" action="{{ route('patient.profile.update', $patient->id) }}">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Profile</h5>
+                    <button class="btn-close" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group input-mini mb-3">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{ $patient->name }}">
+                        @error('name')
+                        <small class="text-danger">{{ $errors->first('name') }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3 input-group input-mini">
+                        <span class="input-group-text"><i class="fa fa-at"></i></span>
+                        <input type="email" class="form-control" placeholder="Email" name="email" value="{{ $patient->email }}">
+                        @error('email')
+                        <small class="text-danger">{{ $errors->first('email') }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3 input-group input-mini">
+                        <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" value="{{ $patient->mobile }}">
+                        @error('mobile')
+                        <small class="text-danger">{{ $errors->first('mobile') }}</small>
+                        @enderror
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

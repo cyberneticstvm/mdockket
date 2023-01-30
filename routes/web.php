@@ -34,12 +34,15 @@ Route::get('/error', [AuthController::class, 'error'])->name('error');
 
 Route::group(['middleware' => ['web', 'auth', 'patient']], function(){
     Route::get('/patient/profile', [PatientController::class, 'profile'])->name('patient.profile');
+    Route::post('/patient/profile/{id}', [PatientController::class, 'profileupdate'])->name('patient.profile.update');
     Route::get('/patient/doctorapp', [PatientController::class, 'doctorapp'])->name('patient.doctorapp');
     Route::post('/patient/doctorapp', [PatientController::class, 'doctorappointment'])->name('patient.doctorappointment');
     Route::get('/patient/clinicapp', [PatientController::class, 'clinicapp'])->name('patient.clinicapp');
     Route::post('/patient/clinicapp', [PatientController::class, 'clinicappointment'])->name('patient.clinicappointment');
     Route::post('/appointment/create/', [PatientController::class, 'saveappointment'])->name('appointment.save');
+    Route::post('/service/create/', [PatientController::class, 'saveservice'])->name('service.save');
     Route::get('/message', [PatientController::class, 'message'])->name('message');
+    Route::get('/patient/bookings', [PatientController::class, 'bookings'])->name('bookings');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){

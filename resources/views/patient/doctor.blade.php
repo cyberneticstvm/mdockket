@@ -20,6 +20,7 @@
                     <div class="input-group input-mini mb-3">
                         <select class="form-control" name="spec">
                             <option value="">Select Specialization</option>
+                            <option value="0">All</option>
                             @forelse($specs as $key => $spec)
                             <option value="{{ $spec->id }}" {{ ($input && $input[0] == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                             @empty
@@ -60,7 +61,7 @@
         <ul class="dz-list message-list">
         @forelse($apps as $key => $app)
             <li>
-                <a href="javascript:void(0)">
+                <a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank">
                     <div class="media media-45 rounded-circle">
                         <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
                     </div>
@@ -95,7 +96,7 @@
                         <div class="row">
                             @while($from <= $end)
                                 @if($c == $app->slots) @break; @endif
-                                <div class="col slot text-center {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-danger text-white no-app' : '' }}">
+                                <div class="col slot text-center {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-secondary text-white no-app' : '' }}">
                                     {{ date('h:i A', $from) }}
                                 </div>
                                 <input type="hidden" name="slot" value="{{ $c }}" />

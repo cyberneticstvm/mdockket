@@ -29,4 +29,8 @@ class Doctor extends Model
         'designation',
         'status',
     ];
+
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
 }
