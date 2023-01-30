@@ -24,4 +24,8 @@ class Clinic extends Model
     public function requests(){
         return $this->hasMany(ServiceRequest::class);
     }
+
+    public function user(){
+        return $this->hasOne(User::class);
+    }
 }

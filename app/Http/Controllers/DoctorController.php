@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Doctor;
 use Carbon\Carbon;
 use Hash;
 use Session;
@@ -18,8 +19,24 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        $doctor = User::find(Auth::user()->id);
-        return view('doctor.profile', compact('doctor'));
+        $user = User::find(Auth::user()->id);
+        return view('doctor.profile', compact('user'));
+    }
+
+    public function profileupdate(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email:filter|unique:users,email,'.$id,
+            'mobile' => 'required|numeric|min:10',
+            'address' => 'required',
+        ]);
+        $input = $request->all();        
+        DB::transaction(function() use ($id, $input, $request) {
+            $user = User::find($id);
+            $user->update($input);
+            Doctor::where('user_id', $id)->update(['mobile' => $request->mobile, 'consultation_address' => $request->address, 'con_latitude' => $request->latitude, 'con_longitude' => $request->longitude]);
+        });        
+        return redirect()->route('doctor.profile')->with('success','Profile updated successfully');
     }
 
     public function index()

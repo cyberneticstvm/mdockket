@@ -51,10 +51,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 
 Route::group(['middleware' => ['web', 'auth', 'doctor']], function(){
     Route::get('/doctor/profile', [DoctorController::class, 'profile'])->name('doctor.profile');
+    Route::post('/doctor/profile/{id}', [DoctorController::class, 'profileupdate'])->name('doctor.profile.update');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'clinic']], function(){
     Route::get('/clinic/profile', [ClinicController::class, 'profile'])->name('clinic.profile');
+    Route::post('/clinic/profile/{id}', [ClinicController::class, 'profileupdate'])->name('clinic.profile.update');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

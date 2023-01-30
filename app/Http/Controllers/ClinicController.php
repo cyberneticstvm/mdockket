@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Clinic;
 use Carbon\Carbon;
 use Hash;
 use Session;
@@ -18,8 +19,24 @@ class ClinicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        $clinic = User::find(Auth::user()->id);
-        return view('clinic.profile', compact('clinic'));
+        $user = User::find(Auth::user()->id);
+        return view('clinic.profile', compact('user'));
+    }
+
+    public function profileupdate(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email:filter|unique:users,email,'.$id,
+            'mobile' => 'required|numeric|min:10',
+            'address' => 'required',
+        ]);
+        $input = $request->all();        
+        DB::transaction(function() use ($id, $input, $request) {
+            $user = User::find($id);
+            $user->update($input);
+            Clinic::where('user_id', $id)->update(['mobile' => $request->mobile, 'address' => $request->address, 'latitude' => $request->latitude, 'longitude' => $request->longitude]);
+        });        
+        return redirect()->route('clinic.profile')->with('success','Profile updated successfully');
     }
 
     public function index()
