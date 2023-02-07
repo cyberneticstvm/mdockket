@@ -425,6 +425,49 @@ $(function(){
 
 	$(".no-app").addClass('no-app');
 
+	$('#dataTbl, #dataTbl1').DataTable();
+
+	$(".cstart").change(function(){
+        var cstart = $(".cstart").val();
+        var bstart = $(".bstart").val();
+        var slots = $(".totslot").val();
+        var dur = $(".dur").val();
+        $.ajax({
+            type: 'GET',
+            url: '/getBreakTime/',
+            data: {'cstart': cstart, 'bstart': bstart, 'slots': slots, 'dur': dur},
+            success: function(response){
+                //$(".bstart, .bend").html(data)
+                var data = JSON.parse(response);
+                $(".bstart").html(data.bs);
+                $(".bend").html(data.bs);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+        return false;
+    });
+    $(".bstart").change(function(){
+        var cstart = $(".cstart").val();
+        var bstart = $(".bstart").val();
+        var slots = $(".totslot").val();
+        var dur = $(".dur").val();
+        $.ajax({
+            type: 'GET',
+            url: '/getBreakTime/',
+            data: {'cstart': cstart, 'bstart': bstart, 'slots': slots, 'dur': dur},
+            success: function(response){
+                //$(".bstart, .bend").html(data)
+                var data = JSON.parse(response);
+                $(".bend").html(data.be);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+        return false;
+    });
 
 })
 setTimeout(function () {
@@ -443,4 +486,18 @@ function initialize() {
         $('#latitude').val(place.geometry['location'].lat());
         $('#longitude').val(place.geometry['location'].lng());
     });
+}
+
+function disablePastDaysInCalendar(){
+    var dtToday = new Date();
+ 
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+     day = '0' + day.toString();
+    var maxDate = year + '-' + month + '-' + day;
+    $('.inputdate').attr('min', maxDate);
 }

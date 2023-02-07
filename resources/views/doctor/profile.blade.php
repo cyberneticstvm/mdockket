@@ -1,4 +1,4 @@
-@extends("clinic.base")
+@extends("doctor.base")
 @section("content")
 <div class="container profile-area">
     <div class="profile">
@@ -101,11 +101,24 @@
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ $user->doctor->address }}">
-                        <input type="hidden" name="latitude" id="latitude" value="{{ $user->doctor->latitude }}" />
-                        <input type="hidden" name="longitude" id="longitude" value="{{ $user->doctor->longitude }}" />
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="consultation_address" value="{{ $user->doctor->consultation_address }}">
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ $user->doctor->con_latitude }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ $user->doctor->con_longitude }}" />
                         @error('address')
                         <small class="text-danger">{{ $errors->first('address') }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3 input-group input-mini">
+                        <span class="input-group-text"><i class="fa fa-file"></i></span>
+                        <select class="form-control" name="spec">
+                            <option value="">Select</option>
+                            @forelse($specs as $key => $spec)
+                                <option value="{{ $spec->id }}" {{ ($user->doctor->spec == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
+                            @empty
+                            @endforelse
+                        </select>
+                        @error('spec')
+                        <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
                     </div>
                 </div>

@@ -52,6 +52,20 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 Route::group(['middleware' => ['web', 'auth', 'doctor']], function(){
     Route::get('/doctor/profile', [DoctorController::class, 'profile'])->name('doctor.profile');
     Route::post('/doctor/profile/{id}', [DoctorController::class, 'profileupdate'])->name('doctor.profile.update');
+
+    Route::get('/doctor/settings/', [DoctorController::class, 'settings'])->name('doctor.settings');
+    Route::post('/doctor/settings/{id}/', [DoctorController::class, 'settingsupdate'])->name('doctor.settings.update');
+    Route::get('/getBreakTime/', [DoctorController::class, 'getBreakTime']);
+
+    Route::get('/doctor/leaves/', [DoctorController::class, 'leaves'])->name('doctor.leaves');
+    Route::post('/doctor/leaves/{id}/', [DoctorController::class, 'leavesupdate'])->name('doctor.leaves.update');
+
+    Route::get('/doctor/appointments/', [DoctorController::class, 'appointments'])->name('doctor.appointments');
+    Route::post('/doctor/appointments/', [DoctorController::class, 'saveappointments'])->name('doctor.appointments.save');
+
+    Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
+    Route::post('/doctor/reports/', [DoctorController::class, 'getAppointmentSummary'])->name('doctor.report.appointments');
+
 });
 
 Route::group(['middleware' => ['web', 'auth', 'clinic']], function(){
