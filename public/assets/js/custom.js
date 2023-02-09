@@ -425,8 +425,6 @@ $(function(){
 
 	$(".no-app").addClass('no-app');
 
-	$('#dataTbl, #dataTbl1').DataTable();
-
 	$(".cstart").change(function(){
         var cstart = $(".cstart").val();
         var bstart = $(".bstart").val();
@@ -467,6 +465,26 @@ $(function(){
             }
         });
         return false;
+    });
+
+	$(".chkClinicStatus").click(function(){
+        var rid = $(this).data('rid');
+        var val = 'P';
+        if($(this).is(":checked")){
+            val = 'C';
+        };
+        $.ajax({
+            type: 'GET',
+            url: '/updateClinicRequestStatus',
+            data: {'rid': rid, 'val': val},
+            success: function(response){
+                alert(response);
+				location.reload();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
     });
 
 })

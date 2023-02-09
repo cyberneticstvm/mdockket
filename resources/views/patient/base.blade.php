@@ -75,4 +75,31 @@
 <script src="{{ public_path().'/assets/vendor/swiper/swiper-bundle.min.js' }}"></script><!-- Swiper -->
 <script src="{{ public_path().'/assets/js/settings.js' }}"></script>
 <script src="{{ public_path().'/assets/js/custom.js' }}"></script>
+
+<script>
+	function pickmylocation(){
+		navigator.geolocation.getCurrentPosition(
+			function (position) {
+				var addr = getUserAddressBy(position.coords.latitude, position.coords.longitude);
+			},
+			function errorCallback(error) {
+			console.log(error)
+			}
+		);
+	}
+	function getUserAddressBy(lat, long) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				var address = JSON.parse(this.responseText)
+				var addr = address.results[0].formatted_address;
+				document.getElementById('address').value = addr;
+				$('#latitude').val(lat);
+				$('#longitude').val(long);
+			}
+		};
+		xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key={{config('app.google_api_key')}}", true);
+		xhttp.send();
+	}
+</script>
 </html>

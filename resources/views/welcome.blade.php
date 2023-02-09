@@ -5,7 +5,7 @@
 	<div class="container vh-100">
 		<div class="welcome-area">
 			<div class="welcome-logo">
-				<img src="{{ public_path().'/assets/dockket/stethoscope.jpg' }}">
+				<img src="{{ public_path().'/assets/dockket/dockket-logo.png' }}">
 				<div class="get-started">
 					<h1 class="dz-title">Dockket</h1>
 				</div>

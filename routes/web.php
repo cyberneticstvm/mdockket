@@ -71,6 +71,16 @@ Route::group(['middleware' => ['web', 'auth', 'doctor']], function(){
 Route::group(['middleware' => ['web', 'auth', 'clinic']], function(){
     Route::get('/clinic/profile', [ClinicController::class, 'profile'])->name('clinic.profile');
     Route::post('/clinic/profile/{id}', [ClinicController::class, 'profileupdate'])->name('clinic.profile.update');
+
+    Route::get('/clinic/requests', [ClinicController::class, 'requests'])->name('clinic.requests');
+    Route::get('/updateClinicRequestStatus', [ClinicController::class, 'updateClinicRequestStatus']);
+
+    Route::get('/clinic/services', [ClinicController::class, 'services'])->name('clinic.services');
+    Route::post('/clinic/services', [ClinicController::class, 'servicesUpdate'])->name('clinic.services.update');
+
+    Route::get('/clinic/reports', [ClinicController::class, 'reports'])->name('clinic.reports');
+    Route::post('/clinic/reports', [ClinicController::class, 'fetchreports'])->name('clinic.reports.fetch');
+
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

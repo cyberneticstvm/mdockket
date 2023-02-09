@@ -83,7 +83,7 @@
 		</div>
 		<ul class="nav navbar-nav">	
 			<li class="nav-label">Main Menu</li>
-			<li><a class="nav-link" href="welcome.html">
+			<li><a class="nav-link" href="/doctor/profile">
 				<span class="dz-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
 					<path d="M13.35 20.13c-.76.69-1.93.69-2.69-.01l-.11-.1C5.3 15.27 1.87 12.16 2 8.28c.06-1.7.93-3.33 2.34-4.29 2.64-1.8 5.9-.96 7.66 1.1 1.76-2.06 5.02-2.91 7.66-1.1 1.41.96 2.28 2.59 2.34 4.29.14 3.88-3.3 6.99-8.55 11.76l-.1.09z"/></svg>
@@ -240,6 +240,33 @@
 <script src="{{ public_path().'/assets/vendor/swiper/swiper-bundle.min.js' }}"></script><!-- Swiper -->
 <script src="{{ public_path().'/assets/js/settings.js' }}"></script>
 <script src="{{ public_path().'/assets/js/custom.js' }}"></script>
+
+<script>
+    function pickmylocation(){
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                var addr = getUserAddressBy(position.coords.latitude, position.coords.longitude);
+            },
+            function errorCallback(error) {
+            console.log(error)
+            }
+        );
+    }
+    function getUserAddressBy(lat, long) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var address = JSON.parse(this.responseText)
+                var addr = address.results[0].formatted_address;
+                document.getElementById('address').value = addr;
+                $('#latitude').val(lat);
+                $('#longitude').val(long);
+            }
+        };
+        xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key={{config('app.google_api_key')}}", true);
+        xhttp.send();
+    }
+</script>
 
 </body>
 </html>
