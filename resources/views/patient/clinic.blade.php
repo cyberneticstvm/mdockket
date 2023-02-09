@@ -26,8 +26,8 @@
                             @empty
                             @endforelse
                         </select>
-                        @error('name')
-                        <small class="text-danger">{{ $errors->first('name') }}</small>
+                        @error('serv')
+                        <small class="text-danger">{{ $errors->first('serv') }}</small>
                         @enderror
                     </div>
                     <a href="javascript:pickmylocation()">Pick My Location</a>

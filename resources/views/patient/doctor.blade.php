@@ -26,8 +26,8 @@
                             @empty
                             @endforelse
                         </select>
-                        @error('name')
-                        <small class="text-danger">{{ $errors->first('name') }}</small>
+                        @error('spec')
+                        <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
                     </div>
                     <a href="javascript:pickmylocation()">Pick My Location</a>
@@ -46,7 +46,12 @@
                         @enderror
                     </div>
                     <div class="mb-3 input-group input-mini">
-                        <input type="date" class="form-control" placeholder="Date" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date">
+                        <div id="datepicker" class="input-group date" data-date-format="dd-M-yyyy">
+                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date" readonly />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
                         @error('date')
                         <small class="text-danger">{{ $errors->first('date') }}</small>
                         @enderror

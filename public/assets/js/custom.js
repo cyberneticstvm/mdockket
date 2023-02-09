@@ -487,6 +487,13 @@ $(function(){
         });
     });
 
+	$("#datepicker").datepicker({ 
+		autoclose: true, 
+		todayHighlight: true,
+		todayBtn : "linked",
+		startDate:new Date(),
+	}).datepicker('update', new Date());
+
 })
 setTimeout(function () {
     $(".alert").hide('slow');
@@ -506,7 +513,7 @@ function initialize() {
     });
 }
 
-function disablePastDaysInCalendar(){
+/*function disablePastDaysInCalendar(){
     var dtToday = new Date();
  
     var month = dtToday.getMonth() + 1;
@@ -518,4 +525,4 @@ function disablePastDaysInCalendar(){
      day = '0' + day.toString();
     var maxDate = year + '-' + month + '-' + day;
     $('.inputdate').attr('min', maxDate);
-}
+}*/
