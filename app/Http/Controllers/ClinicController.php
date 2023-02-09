@@ -111,8 +111,12 @@ class ClinicController extends Controller
             'to_date' => 'required',
         ]);
         $inputs = array($request->from_date, $request->to_date);
-        $apps = $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st, DATE_FORMAT(sr.service_date, '%d/%b/%Y') AS serdate")->whereBetween('service_date', [$request->from_date, $request->to_date])->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
-        return view('clinic.reports', compact('requests', 'inputs'));
+        if($clinic):
+            $apps = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st, DATE_FORMAT(sr.service_date, '%d/%b/%Y') AS serdate")->whereBetween('service_date', [$request->from_date, $request->to_date])->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
+            return view('clinic.reports', compact('requests', 'inputs'));
+        else:
+            return redirect()->route('clinic.profile')->with('success','Please update profile first to view services.');
+        endif;       
     }
 
     public function updateClinicRequestStatus(Request $request){
