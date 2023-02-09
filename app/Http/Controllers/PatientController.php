@@ -104,7 +104,7 @@ class PatientController extends Controller
             'radius' => 'required|numeric',
             'date' => 'required',
         ]);
-        $input = array($request->serv, $request->location, $request->latitude, $request->longitude, $request->radius, $request->date);
+        $input = array($request->serv, $request->location, $request->latitude, $request->longitude, $request->radius, $request->date);        
         $services = DB::table('specializations')->where('category', 2)->orderBy('name')->get();
         $clinics = DB::select("SELECT cs.clinic_id, cs.service_id, u.name, u.email, c.mobile, c.latitude, c.longitude, c.address, 6371 * acos( cos( radians(?) ) * cos( radians( c.latitude ) ) * cos( radians( c.longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( c.latitude ) ) ) AS distance_km FROM clinic_services cs JOIN clinics c ON c.id = cs.clinic_id LEFT JOIN users u ON u.id = c.user_id WHERE IF(? = 0, 1, cs.service_id = ?) AND c.status = 'A' GROUP BY cs.clinic_id HAVING distance_km <= ? ORDER BY distance_km ASC", [$request->latitude, $request->longitude, $request->latitude, $request->serv, $request->serv, $request->radius]);
         return view('patient.clinic', compact('services', 'input', 'clinics'));
@@ -133,6 +133,7 @@ class PatientController extends Controller
             endif;
             Auth::login($patient);
         endif;
+        $input['service_date'] = ($request->date) ? Carbon::createFromFormat('d-M-Y', $request->date)->format('Y-m-d') : Carbon::today();
         $service = ServiceRequest::create($input);
         $clinic = Clinic::find($request->clinic_id); $user = User::find($clinic->user_id);
         $date = $request->service_date; $type = 'S';

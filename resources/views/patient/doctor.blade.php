@@ -30,7 +30,7 @@
                         <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
                     </div>
-                    <a href="javascript:pickmylocation()">Pick My Location</a>
+                    <!--<a href="javascript:pickmylocation()">Pick My Location</a>-->
                     <div class="mb-3 input-group input-mini">
                         <input type="text" class="form-control" placeholder="Address / Location" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location">
                         <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
@@ -47,7 +47,7 @@
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <div id="datepicker" class="input-group date" data-date-format="dd-M-yyyy">
-                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date" readonly />
+                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date" />
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i>
                             </span>

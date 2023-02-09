@@ -21,8 +21,8 @@
 	<title>Dockket - Doctor Booking App</title>
     
     <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="{{ public_path().'/assets/vendor/swiper/swiper-bundle.min.css' }}">
-    <link rel="stylesheet" href="{{ public_path().'/assets/DataTables/datatables.min.css' }}">
     <link rel="stylesheet" type="text/css" href="{{ public_path().'/assets/css/style.css' }}">
     
     <!-- Google Fonts -->
@@ -235,7 +235,7 @@
 ***********************************-->
 <script  async defer src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_api_key')}}&libraries=places"></script>
 <script src="{{ public_path().'/assets/js/jquery.js' }}"></script>
-<script src="{{ public_path().'/assets/DataTables/datatables.min.js' }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="{{ public_path().'/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' }}"></script>
 <script src="{{ public_path().'/assets/vendor/swiper/swiper-bundle.min.js' }}"></script><!-- Swiper -->
 <script src="{{ public_path().'/assets/js/settings.js' }}"></script>

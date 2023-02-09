@@ -20,7 +20,12 @@
                 <div class="row">
                     <div class="col">
                         <label>Leave Date</label>
-                        <input class="form-control inputdate" type="date" value="" name="leave_date">
+                        <div id="datepicker" class="input-group date" data-date-format="dd-M-yyyy">
+                            <input class="form-control" type="text" name="leave_date" />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
                         @error('leave_date')
                         <small class="text-danger">{{ $errors->first('leave_date') }}</small>
                         @enderror

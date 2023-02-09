@@ -23,7 +23,7 @@
 	
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="{{ public_path().'/assets/css/style.css' }}">
     <link rel="stylesheet" href="{{ public_path().'/assets/vendor/swiper/swiper-bundle.min.css' }}">
     

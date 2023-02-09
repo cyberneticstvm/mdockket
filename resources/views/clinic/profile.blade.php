@@ -99,7 +99,7 @@
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
                         @enderror
                     </div>
-                    <a href="javascript:pickmylocation()">Pick My Location</a>
+                    <!--<a href="javascript:pickmylocation()">Pick My Location</a>-->
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                         <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ ($user->clinic) ? $user->clinic->address : '' }}">

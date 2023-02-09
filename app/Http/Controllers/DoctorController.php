@@ -134,15 +134,16 @@ class DoctorController extends Controller
             'leave_date' => 'required',
         ]);
         $input = $request->all();
+        $date = ($request->leave_date) ? Carbon::createFromFormat('d-M-Y', $request->leave_date)->format('Y-m-d') : NULL;
         try{
-            $ap = Appointment::whereDate('appointment_date', $request->leave_date)->where('doctor_id', $id)->get();
-            $ap1 = DB::table('doctor_leaves')->whereDate('leave_date', $request->leave_date)->where('doctor_id', $id)->first();
+            $ap = Appointment::whereDate('appointment_date', $date)->where('doctor_id', $id)->get();
+            $ap1 = DB::table('doctor_leaves')->whereDate('leave_date', $date)->where('doctor_id', $id)->first();
             if($ap->isNotEmpty()):
                 return redirect()->route('doctor.leaves')->with('error','Oops! You have appointments on provided date.');
             elseif($ap1):
                 return redirect()->route('doctor.leaves')->with('error','Oops! You have already leave marked on provided date.');
             else:
-                DB::table('doctor_leaves')->insert(['doctor_id' => $id, 'leave_date' => $request->leave_date, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+                DB::table('doctor_leaves')->insert(['doctor_id' => $id, 'leave_date' => $date, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
                 return redirect()->route('doctor.leaves')->with('success','Leaves updated successfully');
             endif;      
         }catch(Exception $e){
