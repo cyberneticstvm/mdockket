@@ -64,7 +64,18 @@ class AuthController extends Controller
     public function signup($type){
         $type = $type;
         if(Auth::user()):
-            $this->redirectuser();
+            if(Auth::user()->user_type == 'A'):
+                return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if(Auth::user()->user_type == 'P'):
+                return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if(Auth::user()->user_type == 'D'):
+                return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if(Auth::user()->user_type == 'C'):
+                return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
+            endif;
         else:
             return view('signup', compact('type'));
         endif;

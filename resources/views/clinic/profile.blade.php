@@ -37,7 +37,7 @@
                     </div> 
                     <div class="ms-3">
                         <div class="light-text">Mobile Phone</div>
-                        <p class="mb-0">{{ $user->clinic->mobile }}</p>
+                        <p class="mb-0">{{ ($user->clinic) ? $user->clinic->mobile : $user->mobile }}</p>
                     </div>
                 </a>
             </li>
@@ -59,7 +59,7 @@
                     </div> 
                     <div class="ms-3">
                         <div class="light-text">Primary Address</div>
-                        <p class="mb-0">{{ $user->clinic->address }}</p>
+                        <p class="mb-0">{{ ($user->clinic) ? $user->clinic->address : '' }}</p>
                     </div>
                 </a>
             </li>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-mobile"></i></span>
-                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" value="{{ $user->clinic->mobile }}">
+                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" value="{{ ($user->clinic) ? $user->clinic->mobile : $user->mobile }}">
                         @error('mobile')
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
                         @enderror
@@ -102,9 +102,9 @@
                     <a href="javascript:pickmylocation()">Pick My Location</a>
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ $user->clinic->address }}">
-                        <input type="hidden" name="latitude" id="latitude" value="{{ $user->clinic->latitude }}" />
-                        <input type="hidden" name="longitude" id="longitude" value="{{ $user->clinic->longitude }}" />
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ ($user->clinic) ? $user->clinic->address : '' }}">
+                        <input type="hidden" name="latitude" id="latitude" value="{{ ($user->clinic) ? $user->clinic->latitude : '' }}" />
+                        <input type="hidden" name="longitude" id="longitude" value="{{ ($user->clinic) ? $user->clinic->longitude : '' }}" />
                         @error('address')
                         <small class="text-danger">{{ $errors->first('address') }}</small>
                         @enderror

@@ -37,7 +37,7 @@
                     </div> 
                     <div class="ms-3">
                         <div class="light-text">Mobile Phone</div>
-                        <p class="mb-0">{{ $user->doctor->mobile }}</p>
+                        <p class="mb-0">{{ ($user->doctor) ? $user->doctor->mobile : $user->mobile }}</p>
                     </div>
                 </a>
             </li>
@@ -59,7 +59,7 @@
                     </div> 
                     <div class="ms-3">
                         <div class="light-text">Primary Address</div>
-                        <p class="mb-0">{{ $user->doctor->consultation_address }}</p>
+                        <p class="mb-0">{{ ($user->doctor) ? $user->doctor->consultation_address : '' }}</p>
                     </div>
                 </a>
             </li>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-mobile"></i></span>
-                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" value="{{ $user->doctor->mobile }}">
+                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" maxlength="10" value="{{ ($user->doctor) ? $user->doctor->mobile : $user->mobile }}">
                         @error('mobile')
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
                         @enderror
@@ -102,9 +102,9 @@
                     <a href="javascript:pickmylocation()">Pick My Location</a>
                     <div class="mb-3 input-group input-mini">
                         <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                        <input type="text" class="form-control" placeholder="Address" id="address" name="consultation_address" value="{{ $user->doctor->consultation_address }}">
-                        <input type="hidden" name="con_latitude" id="latitude" value="{{ $user->doctor->con_latitude }}" />
-                        <input type="hidden" name="con_longitude" id="longitude" value="{{ $user->doctor->con_longitude }}" />
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="consultation_address" value="{{ ($user->doctor) ? $user->doctor->consultation_address : '' }}">
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($user->doctor) ? $user->doctor->con_latitude : '' }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($user->doctor) ? $user->doctor->con_longitude : '' }}" />
                         @error('address')
                         <small class="text-danger">{{ $errors->first('address') }}</small>
                         @enderror
@@ -114,7 +114,7 @@
                         <select class="form-control" name="spec">
                             <option value="">Select</option>
                             @forelse($specs as $key => $spec)
-                                <option value="{{ $spec->id }}" {{ ($user->doctor->spec == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
+                                <option value="{{ $spec->id }}" {{ ($user->doctor && $user->doctor->spec == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                             @empty
                             @endforelse
                         </select>
