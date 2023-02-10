@@ -79,6 +79,10 @@
 <script src="{{ public_path().'/assets/js/custom.js' }}"></script>
 
 <script>
+	$(function(){
+		"use strict"
+		pickmylocation();
+	});
 	function pickmylocation(){
 		navigator.geolocation.getCurrentPosition(
 			function (position) {
