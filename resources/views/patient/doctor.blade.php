@@ -30,7 +30,7 @@
                         <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
                     </div>
-                    <!--<a href="javascript:pickmylocation()">Pick My Location</a>-->
+                    <a href="javascript:pickmylocation()">Pick My Location</a>
                     <div class="mb-3 input-group input-mini">
                         <input type="text" class="form-control" placeholder="Address / Location" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location">
                         <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
