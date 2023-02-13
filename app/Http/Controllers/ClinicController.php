@@ -35,9 +35,8 @@ class ClinicController extends Controller
         dd($input);
         die;        
         DB::transaction(function() use ($id, $input, $request) {
-            $user = User::find($id);
-            $user->update($input);
-            Clinic::where('user_id', $id)->update(['mobile' => $request->mobile, 'address' => $request->address, 'latitude' => $request->latitude, 'longitude' => $request->longitude]);
+            Clinic::upsert($input, 'user_id');
+            User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'mobile' => $request->mobile]);
         });        
         return redirect()->route('clinic.profile')->with('success','Profile updated successfully');
     }
