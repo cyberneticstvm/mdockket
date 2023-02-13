@@ -214,7 +214,11 @@ class DoctorController extends Controller
     public function reports(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
         $apps = []; $inputs = [];
-        return view('doctor.reports', compact('doctor', 'apps', 'inputs'));
+        if($doctor):
+            return view('doctor.reports', compact('doctor', 'apps', 'inputs'));
+        else:
+            return redirect()->route('doctor.profile')->with('success','Please update profile first to view settings.');
+        endif;        
     }
 
     /**
