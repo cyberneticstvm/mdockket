@@ -31,7 +31,8 @@ class ClinicController extends Controller
             'mobile' => 'required|numeric|min:10',
             'address' => 'required',
         ]);
-        $input = $request->except(array('_token', 'email', 'name'));       
+        $input = $request->except(array('_token', 'email', 'name'));
+        $input['user_id'] = $id;       
         DB::transaction(function() use ($id, $input, $request) {            
             User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'mobile' => $request->mobile]);
             Clinic::upsert($input, 'user_id');
