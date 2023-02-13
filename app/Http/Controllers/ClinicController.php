@@ -31,12 +31,14 @@ class ClinicController extends Controller
             'mobile' => 'required|numeric|min:10',
             'address' => 'required',
         ]);
-        $input = $request->all();        
-        //DB::transaction(function() use ($id, $input, $request) {
+        $input = $request->all();
+        dd($input);
+        die;        
+        DB::transaction(function() use ($id, $input, $request) {
             $user = User::find($id);
             $user->update($input);
             Clinic::where('user_id', $id)->update(['mobile' => $request->mobile, 'address' => $request->address, 'latitude' => $request->latitude, 'longitude' => $request->longitude]);
-        //});        
+        });        
         return redirect()->route('clinic.profile')->with('success','Profile updated successfully');
     }
 
