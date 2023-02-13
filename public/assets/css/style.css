@@ -15619,3 +15619,6 @@ ul.list-check {
 div.pac-container {
   z-index: 99999999999 !important;
 }
+.welcome-logo img{
+  width: 225px !important;
+}
