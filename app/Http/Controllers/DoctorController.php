@@ -35,11 +35,11 @@ class DoctorController extends Controller
             'consultation_address' => 'required',
             'spec' => 'required',
         ]);
-        $input = $request->all();        
+        $input = $request->except(array('_token', 'email', 'name'));
+        $input['user_id'] = $id; 
         DB::transaction(function() use ($id, $input, $request) {
-            $user = User::find($id);
-            $user->update($input);
-            Doctor::where('user_id', $id)->update(['mobile' => $request->mobile, 'consultation_address' => $request->consultation_address, 'con_latitude' => $request->con_latitude, 'con_longitude' => $request->con_longitude, 'spec' => $request->spec]);
+            Doctor::upsert($input, 'user_id');
+            User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'mobile' => $request->mobile]);
         });        
         return redirect()->route('doctor.profile')->with('success','Profile updated successfully');
     }
