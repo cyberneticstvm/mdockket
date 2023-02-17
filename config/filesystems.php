@@ -46,7 +46,7 @@ return [
 
         'external' => [
             'driver' => 'local',
-            'root' => '/domains/dockket.in/public_html/storage/app/public/doctor/photo/',
+            'root' => '/home/u532303454/domains/dockket.in/public_html/storage/app/public/doctor/photo/',
             'throw' => false,
         ],
 
