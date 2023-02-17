@@ -84,7 +84,7 @@
                         </div> 
                         <div class="ms-3">
                             <div class="light-text">Primary Address</div>
-                            <p class="mb-0"></p>
+                            <p class="mb-0">{{ $patient->address }}</p>
                         </div>
                     </a>
                 </li>
