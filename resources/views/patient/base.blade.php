@@ -81,7 +81,7 @@
 <script>
 	$(function(){
 		"use strict"
-		pickmylocation();
+		//pickmylocation();
 	});
 	function pickmylocation(){
 		navigator.geolocation.getCurrentPosition(
