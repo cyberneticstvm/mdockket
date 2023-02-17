@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -36,7 +37,13 @@ class DoctorController extends Controller
             'spec' => 'required',
         ]);
         $input = $request->except(array('_token', 'email', 'name'));
-        $input['user_id'] = $id; 
+        $input['user_id'] = $id;
+        if($request->photo):
+            $doc = $request->file('photo');
+            $fname = 'doctor/photo/'.$doc->getClientOriginalName();
+            Storage::disk('external')->putFileAs($fname, $doc, '');
+            $input['photo'] = $doc->getClientOriginalName();
+        endif; 
         DB::transaction(function() use ($id, $input, $request) {
             Doctor::upsert($input, 'user_id');
             User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'mobile' => $request->mobile]);

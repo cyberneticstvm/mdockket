@@ -13,7 +13,8 @@
             </div>
         @endif
         <div class="media media-100">
-            <img src="{{ public_path().'/assets/images/message/pic6.jpg' }}" alt="/">
+            <!--<img src="{{ public_path().'/assets/images/message/pic6.jpg' }}" alt="/">-->
+            <img src="https://dockket.in/public/storage/doctor/photo/{{ ($user->doctor && $user->doctor->photo) ? $user->doctor->photo : 'avatar.png' }}" alt="/">
             <svg class="progress-style" height="100" width="100">
                 <circle id="round-1" cx="60" cy="60" r="50" stroke="#E8EFF3" stroke-width="7" fill="none" />
                 <circle id="round-2" cx="60" cy="60" r="50" stroke="#C3AC58" stroke-width="7" fill="none" />
@@ -69,7 +70,7 @@
 <div class="modal fade" id="profileModal">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form method="post" action="{{ route('doctor.profile.update', $user->id) }}">
+            <form method="post" action="{{ route('doctor.profile.update', $user->id) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">Update Profile</h5>
@@ -121,6 +122,10 @@
                         @error('spec')
                         <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
+                    </div>
+                    <div class="mb-3 input-group input-mini">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                        <input type="file" class="form-control" placeholder="Profile Photo" name="photo" title="Profile Photo">
                     </div>
                 </div>
                 <div class="modal-footer">
