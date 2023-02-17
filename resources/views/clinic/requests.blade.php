@@ -26,7 +26,6 @@
                                 <h6 class="name">{{ $val->patient_name }}</h6>
                                 <p><a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a></p>
                                 <p class="my-1">
-                                    <i class="fa-solid fa-check text-primary me-1"></i>
                                     {{ $val->sname }}
                                 </p>
                                 <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                
