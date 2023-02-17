@@ -27,6 +27,7 @@ class PatientController extends Controller
             'name' => 'required',
             'email' => 'required|email:filter|unique:users,email,'.$id,
             'mobile' => 'required|numeric|min:10',
+            'address' => 'required',
         ]);
         $input = $request->all();
         $user = User::find($id);

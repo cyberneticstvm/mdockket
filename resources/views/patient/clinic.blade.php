@@ -79,7 +79,7 @@
                                 Address: {{ $clinic->address }}, Contact: {{ $clinic->mobile }}, Distance: {{ number_format($clinic->distance_km, 2) }} KMs 
                             </p>
                         </div>
-                        <span class="time text-primary">₹xxx</span>
+                        <span class="time text-primary"></span>
                     </div>                    
                 </a>
                 <div class="media-content">
