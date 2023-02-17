@@ -40,7 +40,7 @@ class DoctorController extends Controller
         $input['user_id'] = $id;
         if($request->photo):
             $doc = $request->file('photo');
-            $fname = 'doctor/photo/'.$doc->getClientOriginalName();
+            $fname = $doc->getClientOriginalName();
             Storage::disk('external')->putFileAs($fname, $doc, '');
             $input['photo'] = $doc->getClientOriginalName();
         endif; 
