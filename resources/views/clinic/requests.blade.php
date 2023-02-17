@@ -29,9 +29,9 @@
                                     {{ $val->sname }}
                                 </p>
                                 <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                
-                            </div>
-                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a>
+                            </div>                            
                             <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>
+                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a>
                         </div>
                     </a>
                 </li>
