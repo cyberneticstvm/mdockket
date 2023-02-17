@@ -125,16 +125,18 @@
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
                         @enderror
                     </div>
+                    <a href="javascript:pickmylocation()">Pick My Location</a>
+                    <div class="mb-3 input-group input-mini">
+                        <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ $patient->address }}">
+                        <input type="hidden" name="latitude" id="latitude" value="{{ $patient->latitude }}" />
+                        <input type="hidden" name="longitude" id="longitude" value="{{ $patient->longitude }}" />
+                        @error('address')
+                        <small class="text-danger">{{ $errors->first('address') }}</small>
+                        @enderror
+                    </div>
                 </div>
-                <div class="mb-3 input-group input-mini">
-                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                    <input type="text" class="form-control" placeholder="Address" id="address" name="address" value="{{ $patient->address }}">
-                    <input type="hidden" name="latitude" id="latitude" value="{{ $patient->latitude }}" />
-                    <input type="hidden" name="longitude" id="longitude" value="{{ $patient->longitude }}" />
-                    @error('address')
-                    <small class="text-danger">{{ $errors->first('address') }}</small>
-                    @enderror
-                </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-danger light" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
