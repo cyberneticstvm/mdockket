@@ -24,14 +24,14 @@
                         <div class="media-content">
                             <div>
                                 <h6 class="name">{{ $val->patient_name }}</h6>
+                                <p><a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a></p>
                                 <p class="my-1">
                                     <i class="fa-solid fa-check text-primary me-1"></i>
                                     {{ $val->sname }}
                                 </p>
                                 <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                
                             </div>                            
-                            <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>
-                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a>
+                            <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>                            
                         </div>
                     </a>
                 </li>
