@@ -19,7 +19,7 @@
                 <li>
                     <a href="#" target="_blank">
                         <div class="media media-45 rounded-circle">
-                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank"><i class="fa fa-file"></i></a>
+                            <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
                         </div>
                         <div class="media-content">
                             <div>
@@ -30,6 +30,7 @@
                                 </p>
                                 <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                
                             </div>
+                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank"><i class="fa fa-file"></i></a>
                             <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>
                         </div>
                     </a>
