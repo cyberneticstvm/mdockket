@@ -19,7 +19,7 @@
                 <li>
                     <a href="#" target="_blank">
                         <div class="media media-45 rounded-circle">
-                            <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                            <i class="fa fa-user text-success"></i>
                         </div>
                         <div class="media-content">
                             <div>
