@@ -32,7 +32,13 @@ class ClinicController extends Controller
             'address' => 'required',
         ]);
         $input = $request->except(array('_token', 'email', 'name'));
-        $input['user_id'] = $id;       
+        $input['user_id'] = $id;
+        if($request->photo):
+            $clinic = $request->file('photo');
+            $fname = $clinic->getClientOriginalName();
+            Storage::disk('clinic_external')->putFileAs($fname, $clinic, '');
+            $input['photo'] = $clinic->getClientOriginalName();
+        endif;       
         DB::transaction(function() use ($id, $input, $request) {            
             User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'mobile' => $request->mobile]);
             Clinic::upsert($input, 'user_id');

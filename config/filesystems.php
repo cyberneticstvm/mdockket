@@ -44,9 +44,15 @@ return [
             'throw' => false,
         ],
 
-        'external' => [
+        'doc_external' => [
             'driver' => 'local',
             'root' => '/home/u532303454/domains/dockket.in/public_html/storage/app/public/doctor/photo/',
+            'throw' => false,
+        ],
+
+        'clinic_external' => [
+            'driver' => 'local',
+            'root' => '/home/u532303454/domains/dockket.in/public_html/storage/app/public/clinic/photo/',
             'throw' => false,
         ],
 

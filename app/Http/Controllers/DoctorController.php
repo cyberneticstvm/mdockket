@@ -41,7 +41,7 @@ class DoctorController extends Controller
         if($request->photo):
             $doc = $request->file('photo');
             $fname = $doc->getClientOriginalName();
-            Storage::disk('external')->putFileAs($fname, $doc, '');
+            Storage::disk('doc_external')->putFileAs($fname, $doc, '');
             $input['photo'] = $doc->getClientOriginalName();
         endif; 
         DB::transaction(function() use ($id, $input, $request) {
