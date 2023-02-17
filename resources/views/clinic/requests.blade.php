@@ -19,12 +19,11 @@
                 <li>
                     <a href="#" target="_blank">
                         <div class="media media-45 rounded-circle">
-                            <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                            <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank"><i class="fa fa-file"></i></a>
                         </div>
                         <div class="media-content">
                             <div>
                                 <h6 class="name">{{ $val->patient_name }}</h6>
-                                <a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank"><i class="fa fa-file"></i></a>
                                 <p class="my-1">
                                     <i class="fa-solid fa-check text-primary me-1"></i>
                                     {{ $val->sname }}
