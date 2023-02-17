@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'clinic_document_external' => [
+            'driver' => 'local',
+            'root' => '/home/u532303454/domains/dockket.in/public_html/storage/app/public/clinic/docs/',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

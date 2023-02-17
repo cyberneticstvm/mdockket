@@ -85,7 +85,7 @@
                 <div class="media-content">
                     <button class="btn btn-outline-dark w-100 btn-sm slotBtn" data-bs-toggle="collapse" data-bs-target="#clinic_{{ $clinic->clinic_id }}">BOOK NOW</button>
                 </div>
-                <form method="post" action="{{ route('service.save') }}">
+                <form method="post" action="{{ route('service.save') }}" enctype="multipart/form-data">
                     @csrf                   
                     <input type='hidden' name='clinic_id' value="{{ $clinic->clinic_id }}" />                     
                     <input type='hidden' name='service_date' value="{{ $input[5] }}" />                                         
@@ -100,6 +100,10 @@
                         <div class="input-group input-mini mb-3">
                             <span class="input-group-text"><i class="fa fa-phone"></i></span>
                             <input type="text" class="form-control" placeholder="Mobile Number" name="mobile" maxlength="10" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->mobile : '' }}" required>
+                        </div>
+                        <div class="input-group input-mini mb-3">
+                            <span class="input-group-text"><i class="fa fa-file"></i></span>
+                            <input type="file" name="doc" class="form-control">
                         </div>
                         <div class="input-group input-mini mb-3">
                             <span class="input-group-text"><i class="fa fa-file"></i></span>

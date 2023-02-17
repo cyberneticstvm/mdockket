@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -134,6 +135,12 @@ class PatientController extends Controller
             Auth::login($patient);
         endif;
         $input['service_date'] = ($request->date) ? Carbon::createFromFormat('d-M-Y', $request->date)->format('Y-m-d') : Carbon::today();
+        if($request->doc):
+            $doc = $request->file('doc');
+            $fname = $doc->getClientOriginalName();
+            Storage::disk('clinic_document_external')->putFileAs($fname, $doc, '');
+            $input['document'] = $doc->getClientOriginalName();
+        endif;
         $service = ServiceRequest::create($input);
         $clinic = Clinic::find($request->clinic_id); $user = User::find($clinic->user_id);
         $date = $request->service_date; $type = 'S';

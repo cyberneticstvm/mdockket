@@ -15,6 +15,7 @@ class ServiceRequest extends Model
         'clinic_id',
         'service_id',
         'service_date',
+        'document',
         'notes',
         'status',
         'user_id',
