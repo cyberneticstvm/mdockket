@@ -16,7 +16,7 @@
 	<meta name="format-detection" content="telephone=no">
     
     <!-- Favicons Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="{{ public_path().'/assets/images/favicon.png' }}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ public_path().'/assets/images/dockket-icon.png' }}" />
     
     <!-- Title -->
 	<title>Doccket - Doctor Booking App</title>
