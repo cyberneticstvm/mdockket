@@ -8,7 +8,7 @@
             <div class="circle-1"></div>
             <div class="container inner-wrapper">
                 <h1 class="dz-title">Dockket</h1>
-                <p class="mb-0">Doctor Booking App</p>
+                <p class="mb-0">Your health care token</p>
             </div>
         </div>
         <!-- Banner End -->
