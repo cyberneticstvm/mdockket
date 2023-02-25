@@ -6,7 +6,7 @@
 		<div class="welcome-area">
 			<div class="welcome-logo">
 				<img src="{{ public_path().'/assets/dockket/dockket-logo.png' }}">
-				<div class="get-started">Your health care token<div>
+				<div class="get-started"><div>
 			</div>
 			<div class="join-area">
 				<div class="started">
