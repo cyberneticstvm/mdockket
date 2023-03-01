@@ -48,7 +48,7 @@
 								<img src="{{ public_path().'/assets/dockket/homecare.webp' }}" alt="">
 								<div class="ms-2">
 									<h5>HOMECARE</h5>
-									<p>Create an account and manage service requests.</p>
+									<p>Create an account and manage services.</p>
 								</div>
 							</div>    
 						</a>
