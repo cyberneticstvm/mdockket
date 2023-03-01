@@ -22,7 +22,7 @@
                             <option value="">Select Service Type</option>
                             <option value="0" {{ ($input && $input[0] == 0 || old('serv') == 0) ? 'selected' : '' }}>All</option>
                             @forelse($services as $key => $serv)
-                            <option value="{{ $serv->id }}" {{ ($input && $input[0] == $serv->id || old('serv') == $serv->id) ? 'selected' :  }}>{{ $serv->name }}</option>
+                            <option value="{{ $serv->id }}" {{ ($input && $input[0] == $serv->id || old('serv') == $serv->id) ? 'selected' : '' }}>{{ $serv->name }}</option>
                             @empty
                             @endforelse
                         </select>
