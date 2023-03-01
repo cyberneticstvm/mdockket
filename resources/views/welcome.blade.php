@@ -21,7 +21,7 @@
                         </div>
                     @endif
 				</div>
-				<a href="/login/P" class="welcome-box h-auto">
+				<a href="/login/P" class="welcome-box h-auto mt-5">
 					<div class="d-flex align-items-center">
 						<img src="{{ public_path().'/assets/images/welcome/man.png' }}" alt="">
 						<div class="ms-2">
