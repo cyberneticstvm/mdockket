@@ -15622,3 +15622,6 @@ div.pac-container {
 .welcome-logo img{
   width: 225px !important;
 }
+.welcome-logo img{
+  width: auto !important;
+}
