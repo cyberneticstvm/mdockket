@@ -33,8 +33,8 @@
                     <a href="javascript:pickmylocation()">Pick My Location</a>
                     <div class="mb-3 input-group input-mini">
                         <input type="text" class="form-control" placeholder="Address / Location" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location">
-                        <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
-                        <input type="hidden" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
+                        <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : old('latitude') }}" />
+                        <input type="hidden" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : old('longitude') }}" />
                         @error('location')
                         <small class="text-danger">{{ $errors->first('location') }}</small>
                         @enderror
