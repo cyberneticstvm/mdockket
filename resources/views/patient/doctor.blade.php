@@ -20,7 +20,7 @@
                     <div class="input-group input-mini mb-3">
                         <select class="form-control" name="spec">
                             <option value="">Select Specialization</option>
-                            <option value="0" {{ ($input && $input[0] == 0 || old('spec') == $spec->id) ? 'selected' : '' }}>All</option>
+                            <option value="0" {{ ($input && $input[0] == 0 || old('spec') == 0) ? 'selected' : '' }}>All</option>
                             @forelse($specs as $key => $spec)
                             <option value="{{ $spec->id }}" {{ ($input && $input[0] == $spec->id || old('spec') == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                             @empty
