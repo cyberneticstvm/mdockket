@@ -65,6 +65,7 @@ class PatientController extends Controller
         ]);
         $input = $request->all();
         $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
+        $input['appointment_date'] = ($request->appointment_date) ? Carbon::createFromFormat('d-M-Y', $request->appointment_date)->format('Y-m-d') : NULL;
         $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
         $input['token'] = ($token > 0) ? $token+1 : 1;
         if($request->log == 1):
