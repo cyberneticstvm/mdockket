@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
 
     public function login($type){
-        $type = $type;
+        $type = ($type) ? $type : 'P';
         if(Auth::user()):
             $user = User::find(Auth::user()->id);
             if($user->user_type == 'A'):
