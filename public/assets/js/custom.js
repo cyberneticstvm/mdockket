@@ -492,7 +492,7 @@ $(function(){
 		todayHighlight: true,
 		todayBtn : "linked",
 		startDate:new Date(),
-	}).datepicker('update', new Date());
+	});
 
 })
 setTimeout(function () {
