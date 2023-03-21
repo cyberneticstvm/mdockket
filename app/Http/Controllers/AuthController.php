@@ -15,6 +15,26 @@ use Mail;
 class AuthController extends Controller
 {
 
+    public function welcome(){
+        if(Auth::user()):
+            $user = User::find(Auth::user()->id);
+            if($user->user_type == 'A'):
+                return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if($user->user_type == 'P'):
+                return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if($user->user_type == 'D'):
+                return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
+            endif;
+            if($user->user_type == 'C'):
+                return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
+            endif;
+        else:
+            return view('welcome');
+        endif;
+    }
+
     public function login($type){
         $type = $type;
         if(Auth::user()):

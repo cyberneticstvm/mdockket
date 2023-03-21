@@ -18,10 +18,11 @@ use App\Http\Controllers\ClinicController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome');*/
 
+Route::get('/welcome', [AuthController::class, 'welcome'])->name('welcome');
 Route::get('/login/{type}', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 Route::get('/signup/{type}', [AuthController::class, 'signup'])->name('signup');
