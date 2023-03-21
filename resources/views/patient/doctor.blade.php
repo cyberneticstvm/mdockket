@@ -102,7 +102,7 @@
                         <div class="row">
                             @while($from <= $end)
                                 @if($c == $app->slots) @break; @endif
-                                <div class="col slot text-center {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-secondary text-white no-app' : '' }}">
+                                <div class="col slot text-center {{ (in_array(date('h:i A', $from), $apps) || ($from >= $bstime) && $from <= $betime)) ? 'bg-secondary text-white no-app' : '' }}">
                                     {{ date('h:i A', $from) }}
                                 </div>
                                 <input type="hidden" name="slot" value="{{ $c }}" />
