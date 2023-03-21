@@ -47,7 +47,7 @@
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <div id="datepicker" class="input-group date" data-date-format="dd-M-yyyy">
-                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" />
+                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : $input[5] }}" name="date" />
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i>
                             </span>
