@@ -74,13 +74,13 @@
                     </div>
                     <div class="media-content">
                         <div>
-                            <h6 class="name">{{ $app->docname }}</h6>
+                            <h6 class="name">{{ $app->docname }} (₹{{ $app->fee }})</h6>
                             <p class="my-1">
                                 <i class="fa-solid fa-check text-primary me-1"></i>
                                 {{ $app->designation }} ({{ $app->spec}}), Branch: {{ $app->bname }}, Address: {{ $app->consultation_address }}, Distance: {{ number_format($app->distance_km, 2) }} KMs
                             </p>
                         </div>
-                        <span class="time text-primary">₹{{ $app->fee }}</span>
+                        <span class="time"><a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info fa-xl"></i></a></span>
                     </div>                    
                 <!--</a>-->
                 <div class="media-content">
