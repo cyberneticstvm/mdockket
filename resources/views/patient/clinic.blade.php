@@ -6,8 +6,9 @@
     <div class="banner-wrapper">
         <div class="circle-1"></div>
         <div class="container inner-wrapper">
-            <h1 class="dz-title">Dockket</h1>
-            <p class="mb-0">Your health care token</p>
+            <div class="welcome-logo text-center">
+                <img src="{{ public_path().'/assets/dockket/dockket-icon-transparent.png' }}" class="img-fluid">
+            </div>
         </div>
     </div>
     <!-- Banner End -->
