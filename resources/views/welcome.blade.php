@@ -30,9 +30,9 @@
 						</div>
 					</div>
 				</a>
-				<div class="row">
+				<div class="row" style="bottom:2%; position:fixed;">
 					<div class="col">
-						<a href="/login/D" class="welcome-box">
+						<a href="/login/D" class="welcome-box h-auto">
 							<div class="align-items-center">
 								<img src="{{ public_path().'/assets/dockket/doctor.png' }}" alt="">
 								<div class="ms-2">
@@ -43,7 +43,7 @@
 						</a>
 					</div>
 					<div class="col">
-						<a href="/login/C" class="welcome-box">
+						<a href="/login/C" class="welcome-box h-auto">
 							<div class="align-items-center">
 								<img src="{{ public_path().'/assets/dockket/homecare.webp' }}" alt="">
 								<div class="ms-2">
