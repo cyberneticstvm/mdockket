@@ -93,11 +93,12 @@
                     <input type='hidden' name='spec' value="{{ $input[0] }}" />
                     <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : 0 }}" />
                     <div id="slot_{{ $app->id }}" class="collapse">
-                        <p class="text-center text-success mt-3 mb-3">Available Slots on {{ $app->id }} {{ date('d-M-Y', strtotime($input[5])) }}</p>                            
+                        <p class="text-center text-success mt-3 mb-3">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</p>                            
                         @php 
                             $from = strtotime($app->stime);
                             $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = ''; $bstime = strtotime($app->bstime); $betime = strtotime($app->betime); $c = 0;
                             $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
+                            print_r($apps);
                         @endphp
                         <div class="row">
                             @while($from <= $end)
