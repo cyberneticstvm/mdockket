@@ -8,7 +8,7 @@
             <div class="circle-1"></div>
             <div class="container inner-wrapper">
                 <div class="welcome-logo">
-                    <img src="{{ public_path().'/assets/dockket/dockket-icon.png' }}" class="img-fluid">
+                    <img src="{{ public_path().'/assets/dockket/dockket-icon.png' }}" class="img-fluid" width="25%">
                     <div class="get-started">Your health care token<div>
                 </div>
             </div>
