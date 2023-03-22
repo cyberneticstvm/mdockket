@@ -68,7 +68,7 @@
         <ul class="dz-list message-list">
         @forelse($apps as $key => $app)
             <li>
-                <a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank">
+                <!--<a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank">-->
                     <div class="media media-45 rounded-circle">
                         <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
                     </div>
@@ -82,7 +82,7 @@
                         </div>
                         <span class="time text-primary">₹{{ $app->fee }}</span>
                     </div>                    
-                </a>
+                <!--</a>-->
                 <div class="media-content">
                     <button class="btn btn-outline-dark w-100 btn-sm slotBtn" data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}">SHOW AVAILABLE SLOTS</button>
                 </div>
