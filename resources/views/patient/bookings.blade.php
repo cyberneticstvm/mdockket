@@ -50,7 +50,7 @@
                                     <li>
                                         <a href="https://maps.google.com/maps?daddr={{ $val->doctor->con_latitude }},{{ $val->doctor->con_longitude }}&11=" target="_blank">
                                             <div class="media media-45 rounded-circle">
-                                                <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                                                <img src="{{ public_path().'/assets/dockket/Happy-Patient-300x300.png' }}" alt="/">
                                             </div>
                                             <div class="media-content">
                                                 <div>
@@ -72,7 +72,7 @@
                                     <li>
                                         <a href="https://maps.google.com/maps?daddr={{ $val->clinic->latitude }},{{ $val->clinic->longitude }}&11=" target="_blank">
                                             <div class="media media-45 rounded-circle">
-                                                <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                                                <img src="{{ public_path().'/assets/dockket/Happy-Patient-300x300.png' }}" alt="/">
                                             </div>
                                             <div class="media-content">
                                                 <div>
@@ -98,7 +98,7 @@
                                     <li>
                                         <a href="https://maps.google.com/maps?daddr={{ $val->doctor->con_latitude }},{{ $val->doctor->con_longitude }}&11=" target="_blank">
                                             <div class="media media-45 rounded-circle">
-                                                <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                                                <img src="{{ public_path().'/assets/dockket/Happy-Patient-300x300.png' }}" alt="/">
                                             </div>
                                             <div class="media-content">
                                                 <div>
@@ -120,7 +120,7 @@
                                     <li>
                                         <a href="https://maps.google.com/maps?daddr={{ $val->clinic->latitude }},{{ $val->clinic->longitude }}&11=" target="_blank">
                                             <div class="media media-45 rounded-circle">
-                                                <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                                                <img src="{{ public_path().'/assets/dockket/Happy-Patient-300x300.png' }}" alt="/">
                                             </div>
                                             <div class="media-content">
                                                 <div>

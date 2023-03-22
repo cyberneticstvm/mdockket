@@ -25,7 +25,7 @@
 					<div class="d-flex align-items-center">
 						<img src="{{ public_path().'/assets/images/welcome/man.png' }}" alt="">
 						<div class="ms-2">
-							<h5>USER</h5>
+							<h5>CLIENT</h5>
 							<p>Find a Doctor or Book a Homecare service here easier.</p>
 						</div>
 					</div>
