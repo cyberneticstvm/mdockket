@@ -70,7 +70,7 @@
             <li>
                 <a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank">
                     <div class="media media-45 rounded-circle">
-                        <img src="{{ public_path().'/assets/images/message/pic1.jpg' }}" alt="image">
+                        <img src="{{ public_path().'/assets/dockket/doctor.png' }}" alt="image">
                     </div>
                     <div class="media-content">
                         <div>
