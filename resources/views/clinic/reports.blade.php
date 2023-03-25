@@ -18,14 +18,14 @@
             <div class="row">
                 <div class="col">
                     <label>From Date</label>
-                    <input class="form-control" type="date" value="" name="from_date">
+                    <input class="form-control" type="date" value="{{ ($inputs && $inputs[0]) ? $inputs[0] : '' }}" name="from_date">
                     @error('from_date')
                     <small class="text-danger">{{ $errors->first('from_date') }}</small>
                     @enderror
                 </div>
                 <div class="col">
                     <label>To Date</label>
-                    <input class="form-control" type="date" value="" name="to_date">
+                    <input class="form-control" type="date" value="{{ ($inputs && $inputs[1]) ? $inputs[1] : '' }}" name="to_date">
                     @error('to_date')
                     <small class="text-danger">{{ $errors->first('to_date') }}</small>
                     @enderror
