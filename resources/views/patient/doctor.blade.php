@@ -41,14 +41,14 @@
                         @enderror
                     </div>
                     <div class="mb-3 input-group input-mini">
-                        <input type="text" class="form-control" placeholder="Radius" maxlength="2" value="{{ ($input && $input[4]) ? $input[4] : old('radius') }}" name="radius">
+                        <input type="text" class="form-control" placeholder="Search within KMs" maxlength="2" value="{{ ($input && $input[4]) ? $input[4] : old('radius') }}" name="radius">
                         @error('radius')
                         <small class="text-danger">{{ $errors->first('radius') }}</small>
                         @enderror
                     </div>
                     <div class="mb-3 input-group input-mini">
                         <div id="datepicker" class="input-group date" data-date-format="dd-M-yyyy">
-                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date" />
+                            <input class="form-control" type="text" value="{{ ($input && $input[5]) ? $input[5] : old('date') }}" name="date" placeholder="Date"/>
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i>
                             </span>
