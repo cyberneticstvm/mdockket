@@ -24,7 +24,9 @@
                         <div class="media-content">
                             <div>
                                 <h6 class="name">{{ $val->patient_name }}</h6>
+                                @if($val->document)
                                 <p><a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a></p>
+                                @endif
                                 <p class="my-1">
                                     {{ $val->sname }}
                                 </p>
