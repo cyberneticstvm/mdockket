@@ -68,7 +68,7 @@
         <ul class="dz-list message-list">
         @forelse($clinics as $key => $clinic)
             <li>
-                <a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank">
+                <!--<a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank">-->
                     <div class="media media-45 rounded-circle">
                         <img src="{{ public_path().'/assets/dockket/doctor.png' }}" alt="image">
                     </div>
@@ -80,9 +80,9 @@
                                 Address: {{ $clinic->address }}, Contact: {{ $clinic->mobile }}, Distance: {{ number_format($clinic->distance_km, 2) }} KMs 
                             </p>
                         </div>
-                        <span class="time text-primary"></span>
+                        <span class="time text-primary"><a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info fa-xl"></i></a></span>
                     </div>                    
-                </a>
+                <!--</a>-->
                 <div class="media-content">
                     <button class="btn btn-outline-dark w-100 btn-sm slotBtn" data-bs-toggle="collapse" data-bs-target="#clinic_{{ $clinic->clinic_id }}">BOOK NOW</button>
                 </div>
