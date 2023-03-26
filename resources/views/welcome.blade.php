@@ -37,7 +37,7 @@
 								<img src="{{ public_path().'/assets/dockket/doctor.png' }}" alt="">
 								<div class="ms-2">
 									<h5>DOCTOR</h5>
-									<p>Create an account and manage appointments.</p>
+									<p>Manage your appointments.</p>
 								</div>
 							</div>    
 						</a>
@@ -48,7 +48,7 @@
 								<img src="{{ public_path().'/assets/dockket/homecare.webp' }}" alt="">
 								<div class="ms-2">
 									<h5>HOMECARE</h5>
-									<p>Create an account and manage services.</p>
+									<p>Manage your home services.</p>
 								</div>
 							</div>    
 						</a>
