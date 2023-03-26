@@ -30,7 +30,8 @@
                                 <p class="my-1">
                                     {{ $val->sname }}
                                 </p>
-                                <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                
+                                <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>
+                                <span class="time"><i class="fa fa-location-dot text-info fa-xl"></i></span>                                
                             </div>                            
                             <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>                            
                         </div>
