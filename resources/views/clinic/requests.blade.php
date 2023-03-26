@@ -29,10 +29,10 @@
                             <p class="my-1">
                                 {{ $val->sname }}
                             </p>
-                            <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>
-                            <a href="https://maps.google.com/maps?daddr={{ $val->latitude }},{{ $val->longitude }}&11=" target="_blank"><span class="time"><i class="fa fa-location-dot text-info fa-xl"></i></span></a>                                
+                            <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>                                                            
                         </div>                            
-                        <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>                            
+                        <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>
+                        <a href="https://maps.google.com/maps?daddr={{ $val->latitude }},{{ $val->longitude }}&11=" target="_blank"><span class="time"><i class="fa fa-location-dot text-info fa-xl"></i></span></a>                            
                     </div>                    
                 </li>
                 @empty
