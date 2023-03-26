@@ -31,7 +31,7 @@
 					</div>
 				</a>
 				<div class="row" style="bottom:2%; position:fixed;">
-					<div class="col">
+					<div class="col-6">
 						<a href="/login/D" class="welcome-box h-auto">
 							<div class="align-items-center">
 								<img src="{{ public_path().'/assets/dockket/doctor.png' }}" alt="">
@@ -42,7 +42,7 @@
 							</div>    
 						</a>
 					</div>
-					<div class="col">
+					<div class="col-6">
 						<a href="/login/C" class="welcome-box h-auto">
 							<div class="align-items-center">
 								<img src="{{ public_path().'/assets/dockket/homecare.webp' }}" alt="">
