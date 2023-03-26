@@ -16,26 +16,24 @@
         <div class="row">
             <ul class="dz-list message-list">
                 @forelse($requests as $key => $val)
-                <li>
-                    <a href="#" target="_blank">
-                        <div class="media media-45 rounded-circle">
-                            <i class="fa fa-user text-success"></i>
-                        </div>
-                        <div class="media-content">
-                            <div>
-                                <h6 class="name">{{ $val->patient_name }}</h6>
-                                @if($val->document)
-                                <p><a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a></p>
-                                @endif
-                                <p class="my-1">
-                                    {{ $val->sname }}
-                                </p>
-                                <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>
-                                <span class="time"><i class="fa fa-location-dot text-info fa-xl"></i></span>                                
-                            </div>                            
-                            <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>                            
-                        </div>
-                    </a>
+                <li>                    
+                    <div class="media media-45 rounded-circle">
+                        <i class="fa fa-user text-success"></i>
+                    </div>
+                    <div class="media-content">
+                        <div>
+                            <h6 class="name">{{ $val->patient_name }}</h6>
+                            @if($val->document)
+                            <p><a href="https://dockket.in/public/storage/clinic/docs/{{$val->document}}" target="_blank">Attachment</a></p>
+                            @endif
+                            <p class="my-1">
+                                {{ $val->sname }}
+                            </p>
+                            <p>Contact: {{ $val->mobile }}, Notes: {{ $val->notes }}</p>
+                            <a href="https://maps.google.com/maps?daddr={{ $val->latitude }},{{ $val->longitude }}&11=" target="_blank"><span class="time"><i class="fa fa-location-dot text-info fa-xl"></i></span></a>                                
+                        </div>                            
+                        <span class="time">{{ $val->st }}<br><input type="checkbox" class="chkClinicStatus" data-rid="{{ $val->id }}" value="{{ $val->status }}" {{ ($val->status == 'C') ? 'checked' : '' }} /></span>                            
+                    </div>                    
                 </li>
                 @empty
                 @endforelse
