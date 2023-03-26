@@ -105,7 +105,7 @@
     </button>
     <div class="offcanvas-body">
         <h4 class="title border-bottom pb-2 mb-2">Terms & Condition</h4>
-        <p class="mb-0">Lorem ipsum dolor sit amet const Lorem ipsum dolor sit amet const Lorem ipsum dolor sit amet const Lorem ipsum dolor sit amet const.</p>
+        <p class="mb-0">Please visit our<a href="https://dockket.in/privacy-policy" target="_blank">Terms & Conditions</a></p>
     </div>
 </div>
 <!-- CART -->
