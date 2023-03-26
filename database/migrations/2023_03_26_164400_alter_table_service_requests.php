@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('service_requests', function(Blueprint $table){
             $table->string('location')->nullable();
-            $table->decimal('latitude')->nullable();
-            $table->decimal('longitude')->nullable();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
         });
     }
 
