@@ -15,93 +15,99 @@ use Mail;
 class AuthController extends Controller
 {
 
-    public function welcome(){
-        if(Auth::user()):
+    public function welcome()
+    {
+        if (Auth::user()) :
             $user = User::find(Auth::user()->id);
-            if($user->user_type == 'A'):
+            if ($user->user_type == 'A') :
                 return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'P'):
+            if ($user->user_type == 'P') :
                 return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'D'):
+            if ($user->user_type == 'D') :
                 return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'C'):
+            if ($user->user_type == 'C') :
                 return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
             endif;
-        else:
-            return view('welcome');
+        else :
+            //return view('welcome');
+            return redirect()->route('login', 'P');
         endif;
     }
 
-    public function login($type){
+    public function login($type)
+    {
         $type = $type;
-        if(Auth::user()):
+        if (Auth::user()) :
             $user = User::find(Auth::user()->id);
-            if($user->user_type == 'A'):
+            if ($user->user_type == 'A') :
                 return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'P'):
+            if ($user->user_type == 'P') :
                 return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'D'):
+            if ($user->user_type == 'D') :
                 return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
             endif;
-            if($user->user_type == 'C'):
+            if ($user->user_type == 'C') :
                 return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
             endif;
-        else:
+        else :
             return view('login', compact('type'));
         endif;
     }
 
-    public function authenticate(Request $request){
+    public function authenticate(Request $request)
+    {
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
         $credentials = $request->only('email', 'password');
-        if(!Auth::validate($credentials)):
-            return back()->with('error','Your Email and Password combination is wrong.')->withInput($request->all());
+        if (!Auth::validate($credentials)) :
+            return back()->with('error', 'Your Email and Password combination is wrong.')->withInput($request->all());
         endif;
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user, $request->get('remember'));
-        if($user->user_type == 'A'):
+        if ($user->user_type == 'A') :
             return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
         endif;
-        if($user->user_type == 'P'):
+        if ($user->user_type == 'P') :
             return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
         endif;
-        if($user->user_type == 'D'):
+        if ($user->user_type == 'D') :
             return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
         endif;
-        if($user->user_type == 'C'):
+        if ($user->user_type == 'C') :
             return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
         endif;
     }
 
-    public function signup($type){
+    public function signup($type)
+    {
         $type = $type;
-        if(Auth::user()):
-            if(Auth::user()->user_type == 'A'):
+        if (Auth::user()) :
+            if (Auth::user()->user_type == 'A') :
                 return redirect()->route('admin.profile')->with("success", "You are logged in successfully.");
             endif;
-            if(Auth::user()->user_type == 'P'):
+            if (Auth::user()->user_type == 'P') :
                 return redirect()->route('patient.profile')->with("success", "You are logged in successfully.");
             endif;
-            if(Auth::user()->user_type == 'D'):
+            if (Auth::user()->user_type == 'D') :
                 return redirect()->route('doctor.profile')->with("success", "You are logged in successfully.");
             endif;
-            if(Auth::user()->user_type == 'C'):
+            if (Auth::user()->user_type == 'C') :
                 return redirect()->route('clinic.profile')->with("success", "You are logged in successfully.");
             endif;
-        else:
+        else :
             return view('signup', compact('type'));
         endif;
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email:filter|unique:users,email',
@@ -114,71 +120,77 @@ class AuthController extends Controller
         $input['email_token'] = $token;
         $user = User::create($input);
         Auth::login($user);
-        if($user->user_type == 'A'):
+        if ($user->user_type == 'A') :
             return redirect()->route('admin.profile')->with("success", "Congrats. Your registration was successful!");
         endif;
-        if($user->user_type == 'P'):
+        if ($user->user_type == 'P') :
             return redirect()->route('patient.profile')->with("success", "Congrats. Your registration was successful!");
         endif;
-        if($user->user_type == 'D'):
+        if ($user->user_type == 'D') :
             return redirect()->route('doctor.profile')->with("success", "Congrats. Your registration was successful!");
         endif;
-        if($user->user_type == 'C'):
+        if ($user->user_type == 'C') :
             return redirect()->route('clinic.profile')->with("success", "Congrats. Your registration was successful!");
         endif;
     }
 
-    public function logout(){
+    public function logout()
+    {
         Session::flush();
-        Auth::logout();  
+        Auth::logout();
         return redirect('/')->with("success", "You've logged out successfully!");
     }
 
-    public function forgot(){
+    public function forgot()
+    {
         return view('forgot');
     }
 
-    public function forgotemail(Request $request){
+    public function forgotemail(Request $request)
+    {
         $this->validate($request, [
             'email' => 'required|email:filter',
         ]);
         $user = User::where('email', $request->email)->first();
-        if($user):
-            Mail::send('email.password-reset', ['user' => $user], function($message) use($request){
+        if ($user) :
+            Mail::send('email.password-reset', ['user' => $user], function ($message) use ($request) {
                 $message->to($request->email);
                 $message->subject('Dockket - Password Reset Link');
-            });        
-            return redirect()->route('forgot')->with('success','Password chnage link has been sent to your registered email successfully. Please check your inbox/spam folder and click the password change link.');
-        else:
-            return redirect()->route('forgot')->with('error','Provided email id could not found in the records. Please try with another email id.')->withInput($request->all());
+            });
+            return redirect()->route('forgot')->with('success', 'Password chnage link has been sent to your registered email successfully. Please check your inbox/spam folder and click the password change link.');
+        else :
+            return redirect()->route('forgot')->with('error', 'Provided email id could not found in the records. Please try with another email id.')->withInput($request->all());
         endif;
     }
 
-    public function resetpassword($token){
+    public function resetpassword($token)
+    {
         $user = User::where('email_token', $token)->first();
-        if($user):
+        if ($user) :
             return view('change-password', compact('user'));
-        else:
+        else :
             return view('error');
         endif;
     }
 
-    public function updatepassword(Request $request){
+    public function updatepassword(Request $request)
+    {
         $this->validate($request, [
             'password' => 'required|confirmed|min:6',
             'token' => 'required',
         ]);
         $password = Hash::make($request->password);
-        try{
+        try {
             User::where('email_token', $request->token)->where('id', $request->user_id)->update(['password' => $password]);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             throw $e;
         }
         return redirect()->back()
-                        ->with('success', "You've successfully updated your password. Please Login to continue.");
+            ->with('success', "You've successfully updated your password. Please Login to continue.");
     }
 
-    public function error(){
+    public function error()
+    {
         return view('error');
     }
 }
